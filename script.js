@@ -20,7 +20,7 @@ closeBtn.addEventListener("click", () => {
   barBtn.style.display = "block";
   overlay.style.display = "none";
   // RETURNS NAVBAR OUT OF VIEW
-  navBar.style.right = "-100rem";
+  navBar.style.right = "-150rem";
 });
 
 // GETS OVERLAY MAKES THE NAV CLOSE WHEN IT IS CLICKED ON
@@ -30,31 +30,19 @@ overlay.addEventListener("click", () => {
   barBtn.style.display = "block";
   overlay.style.display = "none";
   // RETURNS NAVBAR OUT OF VIEW
-  navBar.style.right = "-100rem";
+  navBar.style.right = "-150rem";
 });
 
-// TO MAKE NAV ON MOBILE CLICKABLE AND NOT HOVER
-function checkMediaQuery() {
-  // If the inner width of the window is less or equal to 768px
-  if (window.innerWidth <= 1180) {
-    // Then log this message to the console
-    console.log("Media Query Matched!");
-    navWithDrop.forEach((element) => {
-      element.addEventListener("click", () => {
-        const closestLi = element.closest("li");
-        const dropdown = closestLi.querySelector(".dropdown");
-        const arrowUp = closestLi.querySelector(".arrow-up");
-        const arrowDown = closestLi.querySelector(".arrow-down");
-        dropdown.classList.toggle("block-display");
-        arrowUp.classList.toggle("arrow-upp");
-        arrowDown.classList.toggle("arrow-downn");
-      });
-    });
-  }
-}
-
-// TO CHECK WHEN THE PAGE LOADS
-window.onload = checkMediaQuery();
-
-// TO CHECK WHEN WINDOW RESIZES
-window.addEventListener("resize", checkMediaQuery);
+// GETS NAV-WITH-DROP CLASS
+navWithDrop.forEach((element) => {
+  element.addEventListener("click", () => {
+    // GETS THE li ELEMENT
+    const closestLi = element.closest("li");
+    const dropdown = closestLi.querySelector(".dropdown");
+    const arrowUp = closestLi.querySelector(".arrow-up");
+    const arrowDown = closestLi.querySelector(".arrow-down");
+    dropdown.classList.toggle("block-display");
+    arrowUp.classList.toggle("arrow-upp-display-block");
+    arrowDown.classList.toggle("arrow-down-display-none");
+  });
+});
